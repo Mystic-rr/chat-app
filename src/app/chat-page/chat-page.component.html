@@ -1,0 +1,14 @@
+<div class="chat-container">
+    <div class="chat-content">
+
+    </div>
+    <div class="bottom-content">
+        <div class="input-content">
+            <div class="input-area" #inputarea (click)="inputAreaFocus()" >
+                <textarea nzBorderless nz-input [nzAutosize]="true" placeholder="输入消息..."
+                (blur)="inputAreaBlur()"    class="ant-input custom-scrollbar"></textarea>
+                    <button nz-button nzType="primary" >button</button>
+            </div>
+        </div>
+    </div>
+</div>
