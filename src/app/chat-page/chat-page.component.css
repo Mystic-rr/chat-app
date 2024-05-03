@@ -3,10 +3,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height:100%;
+    height: 100%;
 }
 
-.chat-content{
+.chat-content {
     width: 790px;
     max-height: 70vh;
     overflow-y: auto;
@@ -27,62 +27,93 @@
 .input-area {
     margin: 0;
     background-color: #f7f7f7;
-    min-height: 96px;
+    min-height: 128px;
     border-radius: 8px;
     padding: 8px 8px;
+    transition: all .2s ease;
 }
-.input-area:focus{
-    background-color: #fff;
+
+.input-button-area {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
 }
+
+.send-ready {
+    color: rgb(13, 110, 253);
+    cursor: pointer;
+}
+
+.send-ready:hover {
+    /* 鼠标悬浮时的样式 */
+    transform: translateY(-5px);
+}
+
+.send-ready:active {
+    /* 鼠标点击时的样式 */
+    transform: translateY(-2px);
+}
+
+.send-empty {
+    cursor: not-allowed;
+}
+
+.icon-button{
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.5s ease;
+}
+.icon-button:hover{
+    color: rgb(13, 110, 253);
+}
+
 textarea {
     padding: 2px;
     line-height: normal;
-    min-height: 58px;
-    max-height: 148px;
+    min-height: 78px;
+    max-height: 168px;
     width: 100%;
     background-color: #f7f7f7;
-    border:none;
+    border: none;
     resize: none;
 }
 
-textarea:focus{
+textarea:focus {
     background-color: #fff;
     border-width: 0;
 }
-
-/* 整个滚动条的样式 */
-::-webkit-scrollbar {
-    width: 4px; /* 滚动条的宽度 */
-    height: 10px; /* 水平滚动条的高度 */
-  }
-  
-  /* 滚动条的轨道 */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; /* 轨道的背景颜色 */
-    border-radius: 10px; /* 轨道的圆角 */
-  }
-  
-  /* 滚动条上的滑动块 */
-  ::-webkit-scrollbar-thumb {
-    background: #888; /* 滑块的背景颜色 */
-    border-radius: 10px; /* 滑块的圆角 */
-  }
-  
-  /* 滚动条上的滑动块悬停效果 */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; /* 滑块悬停时的背景颜色 */
-  }
-
 
 ::ng-deep textarea:focus {
     outline: none;
     border: none;
 }
 
-.ant-input {
-    transition: all .2s ease;
+/* 整个滚动条的样式 */
+::-webkit-scrollbar {
+    width: 4px;
+    /* 滚动条的宽度 */
+    height: 10px;
+    /* 水平滚动条的高度 */
 }
 
-.input-area:focus {
-    box-shadow: 0 1px 4px #00000014;
+/* 滚动条的轨道 */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* 轨道的背景颜色 */
+    border-radius: 10px;
+    /* 轨道的圆角 */
+}
+
+/* 滚动条上的滑动块 */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    /* 滑块的背景颜色 */
+    border-radius: 10px;
+    /* 滑块的圆角 */
+}
+
+/* 滚动条上的滑动块悬停效果 */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* 滑块悬停时的背景颜色 */
 }

@@ -5,12 +5,14 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { ChatContentComponent } from '../chat-content/chat-content.component';
 import { ChatServiceService } from '../service/chat-service.service';
 import { ChatResponse, Message, ViewMessage } from '../interface/chat-interface';
-
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { CommonModule } from '@angular/common';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @Component({
   selector: 'app-chat-page',
   standalone: true,
-  imports: [FormsModule, NzButtonModule, NzInputModule, ChatContentComponent],
+  imports: [FormsModule, NzButtonModule, NzInputModule, ChatContentComponent,NzIconModule,CommonModule,NzDividerModule],
   templateUrl: './chat-page.component.html',
   styleUrl: './chat-page.component.css'
 })
@@ -44,15 +46,18 @@ export class ChatPageComponent {
 
   sendQuery() {
     console.log('query start ')
-    let queryContent = this.query
-    this.query = ''
-    this.messages.push({ content: queryContent, role: 'user', sort: this.sort++ })
-    this.chatService.sendQuery(queryContent).subscribe(
-      (res) => {
-        let data = res as ChatResponse
-        this.messages.push({ content: data.choices[0].message.content, role: data.choices[0].message.role, sort: this.sort++ })
-      }
-    )
+    if(this.query !== '' && this.query !== null){
+      let queryContent = this.query
+      this.query = ''
+      this.messages.push({ content: queryContent, role: 'user', sort: this.sort++ })
+      this.chatService.sendQuery(queryContent).subscribe(
+        (res) => {
+          let data = res as ChatResponse
+          this.messages.push({ content: data.choices[0].message.content, role: data.choices[0].message.role, sort: this.sort++ })
+        }
+      )
+    }
+    
   }
 
   handleKeyDown(event: KeyboardEvent) {
@@ -70,6 +75,10 @@ export class ChatPageComponent {
       // 执行换行或其他操作，但默认的textarea行为已经允许Alt+Enter换行，所以可能不需要额外操作
       console.log('Alt+Enter was pressed.')
     }
+  }
+
+  clear(){
+    this.query = ''
   }
 
 }
