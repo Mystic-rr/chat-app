@@ -1,7 +1,9 @@
 <div class="chat-content-container">
     <div class="chat-messages">
-        <div class="message sent"> Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? </div>
-        <div class="message received"> I'm good, thank you! </div>
-        <div class="message sent"> That's great to hear! </div>
+        <ng-container *ngFor="let message of messages">
+            <div class="message" [class]="message.role=='user'?'sent':'received'">
+                {{ message.content }}
+            </div>
+        </ng-container>
     </div>
 </div>

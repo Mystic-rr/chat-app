@@ -7,7 +7,9 @@
 }
 
 .chat-content{
-    max-width: 790px;
+    width: 790px;
+    max-height: 70vh;
+    overflow-y: auto;
 }
 
 .bottom-content {

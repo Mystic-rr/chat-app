@@ -3,9 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Token } from '@angular/compiler';
+import { Message, ChatEvent, ChatResponse } from '../interface/chat-interface';
 
-const url = "https://api.coze.com/open_api/v2/chat"
-const token = "Bearer pat_qovHpDd0TWTqNIiH4KPD4cRVRpkEJUna9bbzWeFoh0PWNU9j1YFXmpE9rwXO1Y3Z"
+const url = "https://fukui-kankou-multi-language.openai.azure.com/openai/deployments/Fukui-Kankou-Multi-Language-35-Turbo/chat/completions?api-version=2024-02-01"
+const token = "aab8659bd4964a688c3d717e28b58aa5"
 const host = "api.coze.com"
 const bot_id = "7356846038512844818"
 const user = "29032201862555"
@@ -18,43 +19,15 @@ export class ChatServiceService {
 
   constructor(private http: HttpClient) { }
 
-  sendQuery(query: string) {
+  sendQuery(query: string){
     let headers = new Headers();
-    headers.append('Authorization', token)
+    headers.append('api-key', token)
     headers.append('Content-Type', 'application/json')
-    let body = `{"conversation_id":"123","bot_id":"${bot_id}","query":"${query}","stream":true,"user":"${user}"}`
-    let request = new Request(url, { headers: headers, body: body, method: 'POST' })
-    return new Observable(observer => {
-      // 使用Fetch API
-      fetch(request).then(response => {
-        // 获取到ReadableStream对象
-        const reader = response.body!.getReader();
+    let array = new Array<Message>
+    array.push({role:'user',content:query})
+    let jsonbody:ChatEvent = new ChatEvent(array)
+    return this.http.post(url,jsonbody,{headers:{"api-key":token,"Content-Type":"application/json"}})
 
-        // 递归函数来按块读取数据
-        function read() {
-          reader.read().then(({ done, value }) => {
-            // 直到读取完成
-            if (done) {
-              observer.complete();
-              return;
-            }
-            // 处理每一块数据
-            const textChunk = new TextDecoder().decode(value);
-            console.log(textChunk) 
-            observer.next(textChunk);
-            // 递归调用，继续读取下一块
-            read();
-          }).catch(err => {
-            // 处理错误
-            observer.error(err);
-          });
-        }
-        // 开始读取数据
-        read();
-      });
-
-
-    });
   }
 
 }
