@@ -6,6 +6,10 @@
     height:100%;
 }
 
+.chat-content{
+    max-width: 790px;
+}
+
 .bottom-content {
     padding: 8px;
     width: 100%;

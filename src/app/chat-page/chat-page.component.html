@@ -1,13 +1,15 @@
 <div class="chat-container">
     <div class="chat-content">
-
+        <app-chat-content></app-chat-content>
     </div>
     <div class="bottom-content">
         <div class="input-content">
-            <div class="input-area" #inputarea (click)="inputAreaFocus()" >
-                <textarea nzBorderless nz-input [nzAutosize]="true" placeholder="输入消息..."
-                (blur)="inputAreaBlur()"    class="ant-input custom-scrollbar"></textarea>
-                    <button nz-button nzType="primary" >button</button>
+            <div class="input-area" #inputarea>
+                <textarea nzBorderless nz-input [nzAutosize]="true" placeholder="输入消息..." (blur)="inputAreaBlur()"
+                    (focus)="inputAreaFocus()" class="ant-input custom-scrollbar" [(ngModel)]="query"></textarea>
+                <div class="input-button-area">
+                    <button nz-button nzType="primary" (click)="sendQuery()">Send</button>
+                </div>
             </div>
         </div>
     </div>
