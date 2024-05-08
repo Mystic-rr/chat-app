@@ -12,10 +12,11 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { HistoryPageComponent } from '../history-page/history-page.component';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 @Component({
   selector: 'app-chat-page',
   standalone: true,
-  imports: [FormsModule, NzButtonModule, NzInputModule, ChatContentComponent, NzIconModule, CommonModule, NzDividerModule, NzDrawerModule, HistoryPageComponent, NzMessageModule],
+  imports: [FormsModule, NzButtonModule, NzInputModule, ChatContentComponent, NzIconModule, CommonModule, NzDividerModule, NzDrawerModule, HistoryPageComponent, NzMessageModule,NzRadioModule],
   templateUrl: './chat-page.component.html',
   styleUrl: './chat-page.component.css'
 })
@@ -123,6 +124,7 @@ export class ChatPageComponent {
 
   recognition = new ((window as any).webkitSpeechRecognition )()
   isRecognit = false
+  langSetting = 'zh-CN'
 
   recogStart() {
     // 检查浏览器是否支持 Web Speech API
@@ -130,8 +132,7 @@ export class ChatPageComponent {
       console.log('recognition start')
       // 创建一个语音识别的实例
       this.isRecognit = true
-      this.recognition.lang = 'en-US';
-      // this.recognition.lang = 'zh-CN';
+      this.recognition.lang = this.langSetting
       this.recognition.continuous = true; // 或者设置为 true 以保持不断的监听
       this.recognition.interimResults = true; // 是否返回临时结果
 

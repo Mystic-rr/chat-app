@@ -15,7 +15,6 @@
 .bottom-content {
     padding: 8px;
     width: 100%;
-    height: 156px;
     text-align: center;
 }
 
@@ -23,16 +22,28 @@
     margin: auto;
     max-width: 790px;
 }
-
+.setting-area {
+    max-width: 790px;
+    text-align: left;
+    margin-bottom: 8px;
+}
 .input-area {
-    margin: 0;
     background-color: #f7f7f7;
-    min-height: 128px;
+    min-height: 156px;
     border-radius: 8px;
-    padding: 8px 8px;
+    padding: 8px 16px;
     transition: all .2s ease;
 }
-
+textarea {
+    padding: 2px;
+    line-height: normal;
+    min-height: 98px;
+    max-height: 168px;
+    width: 100%;
+    background-color: #f7f7f7;
+    border: none;
+    resize: none;
+}
 .input-button-area {
     margin-top: 8px;
     display: flex;
@@ -45,15 +56,6 @@
     cursor: pointer;
 }
 
-.send-ready:hover {
-    /* 鼠标悬浮时的样式 */
-    transform: translateY(-5px);
-}
-
-.send-ready:active {
-    /* 鼠标点击时的样式 */
-    transform: translateY(-2px);
-}
 
 .send-empty {
     cursor: not-allowed;
@@ -68,26 +70,9 @@
     color: rgb(13, 110, 253);
 }
 
-textarea {
-    padding: 2px;
-    line-height: normal;
-    min-height: 78px;
-    max-height: 168px;
-    width: 100%;
-    background-color: #f7f7f7;
-    border: none;
-    resize: none;
-}
 
-textarea:focus {
-    background-color: #fff;
-    border-width: 0;
-}
 
-::ng-deep textarea:focus {
-    outline: none;
-    border: none;
-}
+
 
 /* 整个滚动条的样式 */
 ::-webkit-scrollbar {
