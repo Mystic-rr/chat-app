@@ -5,5 +5,8 @@
                 {{ message.content }}
             </div>
         </ng-container>
+        <div class="message received load" *ngIf="isloading">
+            <nz-spin nzSimple [nzSpinning]="isloading"></nz-spin>
+        </div>
     </div>
 </div>

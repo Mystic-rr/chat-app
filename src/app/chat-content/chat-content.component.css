@@ -28,3 +28,8 @@
     background-color: #E5E5EA;
     align-self: flex-start;
 }
+
+.load {
+    text-align: center;
+    padding: 10px 50px;
+}

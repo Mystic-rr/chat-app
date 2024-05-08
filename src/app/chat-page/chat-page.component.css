@@ -37,6 +37,7 @@
     margin-top: 8px;
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 }
 
 .send-ready {
@@ -117,3 +118,35 @@ textarea:focus {
     background: #555;
     /* 滑块悬停时的背景颜色 */
 }
+
+@keyframes pulsate {
+    0% {
+      box-shadow: 0 0 3px #9ecaed, 0 0 6px #9ecaed, 0 0 9px #9ecaed;
+    }
+    50% {
+      box-shadow: 
+      0 0 3px #9ecaed, 
+      0 0 6px #9ecaed, 
+      0 0 9px #9ecaed, 
+      0 0 12px #9ecaed, 
+      0 0 15px #9ecaed, 
+      0 0 18px #9ecaed;
+    }
+    100% {
+      box-shadow: 0 0 3px #9ecaed, 0 0 6px #9ecaed, 0 0 9px #9ecaed;
+    }
+  }
+
+  .record-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    animation: pulsate 1.5s infinite;
+    position: relative; /* 必要的，否则z-index不会起作用 */
+    z-index: 10; /* 一个比周围元素高的z-index值 */
+  }
