@@ -13,7 +13,7 @@
     <div class="bottom-content">
         <div class="input-content">
             <div class="setting-area">
-                <nz-radio-group [(ngModel)]="langSetting">
+                <nz-radio-group [(ngModel)]="langSetting" (ngModelChange)="langSetChange()">
                     <label nz-radio-button nzValue="zh-CN">中文</label>
                     <label nz-radio-button nzValue="en-US">English</label>
                     <label nz-radio-button nzValue="zh-TW">中国台湾</label>

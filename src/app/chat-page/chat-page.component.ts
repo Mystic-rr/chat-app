@@ -126,6 +126,11 @@ export class ChatPageComponent {
   isRecognit = false
   langSetting = 'zh-CN'
 
+  langSetChange(){
+    this.recognition.stop();
+    this.recogStart()
+  }
+
   recogStart() {
     // 检查浏览器是否支持 Web Speech API
     if ('webkitSpeechRecognition' in window) {
@@ -159,7 +164,7 @@ export class ChatPageComponent {
       this.recognition.onend = () => {
         // 你可以在这里重新启动识别器或进行其他操作
         console.log('Speech recognition service disconnected');
-        this.recognition.stop();
+        this.recogStop()
       };
     } else {
       console.error('此浏览器不支持 Web Speech API');
